@@ -47,14 +47,72 @@ A **hidden layer** is any layer that is between the input (first) layer and outp
 
 Given the following measurements:
 
-| No. | height | weight | age| male |
+| No. | height | weight | age| gender |
 | :---: | :---: | :---: | :---: | :---: |
-| 1 | 151.765 | 47.82 | 63 | 1 |
-| 2 | 139.700 | 36.48 | 63 | 0 |
-| 3 | 136.525 | 31.86 | 65 | 0 |
-| 4 | 156.845 | 53.04 | 41 | 1 |
-| 5 | 145.415 | 41.27 | 51 | 0 |
-| 6 | 163.830 | 62.99 | 35 | 1 |
+| 1 | 151 | 47 | 63 | m |
+| 2 | 139 | 36 | 63 | f |
+| 3 | 136 | 31 | 65 | f |
+| 4 | 156 | 53 | 41 | m |
+| 5 | 145 | 41 | 51 | f |
+| 6 | 163 | 62 | 35 | m |
+
+We want our neural network to predict the gender based on the height and weight of the individual first.
+
+Truncating the heights, weights, and ages by their arithmetic means for easier calculation. While males are represented with `1` and females as `0`.
+
+| No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
+| :---: | :---: | :---: | :---: | :---: |
+| 1 | 103 | 2 | 10 | 1 |
+| 2 | 91 | -9 | 10 | 0 |
+| 3 | 88 | -14 | 12 | 0 |
+| 4 | 108 | -8 | -12 | 1 |
+| 5 | 97 | -4 | -2 | 0 |
+| 6 | 115 | 17 | -18 | 1 |
+
+### Loss/Cost
+The quantification of the performance measure of a model based on a function known as the **cost or loss** function.
+
+Using the **Mean Square Error (MSE)** loss function:
+<center><img src='/img/mse_loss_function.png' width='400' /></center>
+
+Here,
+* *n* is the total number of samples.
+* *y* is the predicted variable that is the gender of the individual.
+* *y<sub>true</sub>* is the actual Gender while *y<sub>pred</sub>* is the predicted gender of the individual.
+* **Error** = *y<sub>true</sub>* - *y<sub>pred</sub>*
+
+The **MSE** is mean of all the squared errors for each sample. The smaller the loss, the better the ML model.
+
+**Training a neural network** refers to reducing this loss or minimizing the *loss/cost function*.
+
+### Example of loss calculation
+
+Given the following values:
+
+| No. | *y<sub>true</sub>* | *y<sub>pred</sub>* |
+| :---: | :---: | :---: | :---: | :---: |
+| 1 | 1 | 1 |
+| 2 | 0 | 1 |
+| 3 | 0 | 0 |
+| 4 | 1 | 1 |
+| 5 | 0 | 0 |
+| 6 | 1 | 1 |
+
+MSE = <sup>1</sup>&frasl;<sub>6</sub> (0+1+0+0+0+0) = **0.166**
+
+### Calculating MSE loss
+
+```python
+def mse(y_true, y_pred):
+  ''' y_true and y_predict are numpy arrays,
+  which represent the true and predicted values
+  '''
+  return ((y_true - y_pred)**2).mean()
+
+  y_true = np.array([1,0,0,1,0,1])
+  y_pred = np.array([1,1,0,1,0,1])
+  mse(y_true, y_pred) # 0.166
+```
 
 ## 4) Training a complete neural network
 
