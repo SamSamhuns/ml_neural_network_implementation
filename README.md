@@ -64,7 +64,7 @@ n1.feedforward(inputs) # 0.999999694097773
 ```
 
 ## 2) A neural network
-It a collection of neurons that are connected together.
+It a collection of neurons that are connected together. A **Deep Neural Network** is a network with multiple hidden layers.
 
 <img src='img/simple_neural_network.png' />
 
@@ -305,7 +305,7 @@ The problem of fine tuning the weights and biases so as to minimize the function
     <i>w<sub>1</sub></i> = <i>w<sub>1</sub></i> - <i>η</i> <sup><i>∂L</i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>
 </p>
 
-*η* is a constant known as the **learning rate** that controls how fast we train our network.
+*η* is a constant known as the **learning rate** that controls how fast we train our network. Choosing a big *η* might cause our model to overshoot the minima of the cost function and swing around it forever. Choosing too small of a value for *η* might cause our partial derivative slope to never reach this minima.
 
 - If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is negative, <sub> *∂w<sub>1</sub>*</sub> will be increased which will reduce *L*.
 - If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is positive, <sub> *∂w<sub>1</sub>*</sub> will be decreased which will reduce *L*.
