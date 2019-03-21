@@ -19,7 +19,7 @@ Weighted inputs added together with a bias `b`. Then the sum is passed through a
 
 The activation function turns an unbounded input into a useful predictable form. It compresses inputs in the domain (-&infin;, 	+&infin;) to (0, 1). Large negative numbers become ~0 while large positive numbers become ~1.
 
-One example of the activation function is the sigmoid function. 1&frasl;<sub>(1+e<sup>-x</sup>)</sub>
+One example of the activation function is the sigmoid function. f(x) = 1&frasl;<sub>(1+e<sup>-x</sup>)</sub>
 
 ## 1) An instance of a two input neuron
 A two input neuron with weight, *w*=[2,0] and bias *b*=3. And an input of [3,4].
@@ -34,7 +34,34 @@ Using the dot product for concise computation.
 
 The **logit** of the neuron is equal to the dot product of the input and weights vector added to the bias.
 
-The demonstrated process of passing inputs forward to get an output is called a **feedforward**.
+The process of passing inputs forward to get an output is called a **feedforward**.
+
+```python
+import numpy as np
+# A simple two input neuron example
+
+def sigmoid(x):
+  '''Sigmoid function'''
+  return 1/(1+np.exp(-x))
+
+class Neuron:
+  '''Simple two input neuron class'''
+  def __init__(self, weights, bias):
+    self.weights = weights
+    self.bias = bias
+
+  def feedforward(inputs):
+    '''weights and input array must have same dimensions'''
+    si = np.dot(self.weights, inputs) + self.bias
+    return sigmoid(si)
+
+weights = np.array([3,4,0,2,4])
+bias = -6
+inputs = np.array([1,3,2,1,1])
+
+n1 = Neuron(weights, bias)
+n1.feedforward(inputs) # 0.999999694097773
+```
 
 ## 2) A neural network
 It a collection of neurons that are connected together.
@@ -42,6 +69,27 @@ It a collection of neurons that are connected together.
 <img src='img/simple_neural_network.png' />
 
 A **hidden layer** is any layer that is between the input (first) layer and output (last) layer.
+
+```python
+# Using the same implementation of Neuron class and sigmoid function from above
+class NeuralNetwork:
+  def __init__(self, weights, bias):
+    self.h1 = Neuron(weights, bias)
+    self.h2 = Neuron(weights, bias)
+    self.o1 = Neuron(weights, bias)
+
+  def feedforward(self, inputs):
+    out_h1 = self.h1.feedforward(inputs)
+    out_h2 = self.h2.feedforward(inputs)
+
+    out_o1 = self.o1.feedforward(np.array[out_h1, out_h2])
+    return out_o1
+
+net1 = NeuralNetwork([0, 1], 0)
+inpt = np.array([2, 3])
+net1.feedforward(inpt) # 0.7216325609518421
+```
+
 
 ## 3) Training a neural network (Mean Squared Error)
 
