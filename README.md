@@ -215,7 +215,6 @@ where ƒ represents the sigmoid function. So:
 <p align='center'>
   <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> * <sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>
   </br>
-
   <b><sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> = <i>w<sub>7</sub></i> * ƒ<sup>'</sup>( <i>w<sub>7</sub>.h<sub>1</sub></i> + <i>w<sub>8</sub>.h<sub>2</sub></i> + <i>b<sub>3</sub></i> )</b>
   </br></br>
 </p>
@@ -225,7 +224,6 @@ Doing the same **back propagation** calculation for <sup>*∂h<sub>1</sub>*  </s
 <p align='center'>
   <i>h<sub>1</sub></i> = ƒ( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>3</sub>.x<sub>2</sub></i> + <i>w<sub>5</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )
   </br>
-
   <b><sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <i>x<sub>1</sub></i> * ƒ<sup>'</sup>( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>3</sub>.x<sub>2</sub></i> + <i>w<sub>5</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )</b>
   </br></br>
 </p>
@@ -240,11 +238,7 @@ Here, *x<sub>1</sub>* is the height, *x<sub>2</sub>* is weight and *x<sub>3</sub
 
 Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> using the following equation:
 
-<p align='center'>
-    
-   <b><sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>  = <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> \* <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> \* <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub></b>
-
-</p>
+<b><sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>  = <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> \* <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> \* <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub></b>
 
 ### Example calculation of the partial derivative
 
