@@ -308,7 +308,7 @@ The negative partial derivative states that increasing *w<sub>1</sub>* would dec
 The problem of fine tuning the weights and biases so as to minimize the function *L* is an optimization problem. We can use an algorithm called **stochastic gradient descent (SGD)** for this. SGD is just the following update equation:
 
 <p align='center'>
-*w<sub>1</sub>* = *w<sub>1</sub>* - *η* <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>
+    <i>w<sub>1</sub></i> = <i>w<sub>1</sub></i> - <i>η</i> <sup><i>∂L</i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>
 </p>
 
 *η* is a constant known as the **learning rate** that controls how fast we train our network.
