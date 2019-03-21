@@ -186,7 +186,7 @@ The loss of a function can also be represented as function of weights and biases
 Now, loss can be represented as a multivariate function,
 
 <p align='center'>
-*L (w1, w2, w3, w4, w5, w6, b1, b2, b2)*
+    <i>L (w1, w2, w3, w4, w5, w6, b1, b2, b2)</i>
 </br></br>
 </p>
 
@@ -195,7 +195,7 @@ Now, to minimize this loss function we have to observe how *L* might change when
 We can rewrite this partial derivative in terms of <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> like:
 
 <p align='center'>
-**<sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> = <sup>*∂L* </sup>&frasl;<sub>*∂y<sub>pred</sub>* </sub> \* <sup>*∂y<sub>pred</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>**
+    <b><sup><i>∂L</i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <sup><i>∂L</i></sup>&frasl;<sub><i>∂y<sub>pred</sub></i> </sub> * <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub></b>
 </br>
 </br>
 </p>
@@ -203,7 +203,7 @@ We can rewrite this partial derivative in terms of <sup>*∂y<sub>pred</sub>* </
 We calculated that *L* = ( 1 - *y<sub>pred</sub>* )<sup>2</sup>, so:
 
 <p align='center'>
-**<sup>*∂L* </sup>&frasl;<sub>*∂y<sub>pred</sub>* </sub> = -2 ( 1 - *y<sub>pred</sub>* )**
+    <b><sup><i>∂L</i> </sup>&frasl;<sub><i>∂y<sub>pred</sub></i> </sub> = -2 ( 1 - <i>y<sub>pred</sub></i> )</b>
 </br></br>
 </p>
 
@@ -213,28 +213,28 @@ To calculate  <sup>*∂y<sub>pred</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*<
 where ƒ represents the sigmoid function. So:
 
 <p align='center'>
-  <sup>*∂y<sub>pred</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> = <sup>*∂y<sub>pred</sub>*  </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> \* <sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>
+  <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> * <sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>
   </br>
 
-  **<sup>*∂y<sub>pred</sub>*  </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> = *w<sub>7</sub>* \* ƒ<sup>'</sup>( *w<sub>7</sub>.h<sub>1</sub>* + *w<sub>8</sub>.h<sub>2</sub>* + *b<sub>3</sub>* )**
+  <b><sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> = <i>w<sub>7</sub></i> * ƒ<sup>'</sup>( <i>w<sub>7</sub>.h<sub>1</sub></i> + <i>w<sub>8</sub>.h<sub>2</sub></i> + <i>b<sub>3</sub></i> )</b>
   </br></br>
 </p>
 
 Doing the same **back propagation** calculation for <sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
 
 <p align='center'>
-  *h<sub>1</sub>* = ƒ( *w<sub>1</sub>.x<sub>1</sub>* + *w<sub>3</sub>.x<sub>2</sub>* + *w<sub>5</sub>.x<sub>3</sub>* + *b<sub>1</sub>* )
+  <i>h<sub>1</sub></i> = ƒ( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>3</sub>.x<sub>2</sub></i> + <i>w<sub>5</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )
   </br>
 
-  **<sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> = *x<sub>1</sub>* \* ƒ<sup>'</sup>( *w<sub>1</sub>.x<sub>1</sub>* + *w<sub>3</sub>.x<sub>2</sub>* + *w<sub>5</sub>.x<sub>3</sub>* + *b<sub>1</sub>* )**
+  <b><sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <i>x<sub>1</sub></i> * ƒ<sup>'</sup>( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>3</sub>.x<sub>2</sub></i> + <i>w<sub>5</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )</b>
   </br></br>
 </p>
 
 Here, *x<sub>1</sub>* is the height, *x<sub>2</sub>* is weight and *x<sub>3</sub>* is the age. *ƒ<sup>'</sup>( x )* is the derivate of the sigmoid function:
 
 <p align='center'>
-  *ƒ( x )* = <sup>*1*  </sup>&frasl;<sub> *1 + e<sup>-x</sup>*</sub></br>
-  *ƒ<sup>'</sup>( x )* = - ( 1 + e<sup>-x</sup> )<sup>-2</sup> . ( - e<sup>-x</sup> ) = <sup>1</sup>&frasl;<sub> ( 1 + e<sup>-x</sup> )</sub> \* ( 1 - <sup>1  </sup>&frasl;<sub> 1 + e<sup>-x</sup></sub> ) = **ƒ( x ) \* (1 - ƒ( x ))**
+  <i>ƒ( x )</i> = <sup><i>1</i>  </sup>&frasl;<sub> <i>1 + e<sup>-x</sup></i></sub></br>
+  <i>ƒ<sup>'</sup>( x )</i> = - ( 1 + e<sup>-x</sup> )<sup>-2</sup> . ( - e<sup>-x</sup> ) = <sup>1</sup>&frasl;<sub> ( 1 + e<sup>-x</sup> )</sub> * ( 1 - <sup>1  </sup>&frasl;<sub> 1 + e<sup>-x</sup></sub> ) = <b>ƒ( x ) * (1 - ƒ( x ))</b>
   </br></br>
 </p>
 
@@ -242,7 +242,7 @@ Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>
 
 <p align='center'>
     
-__<sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>  = <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> \* <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> \* <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>__
+   <b><sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>  = <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> \* <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> \* <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub></b>
 
 </p>
 
