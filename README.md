@@ -90,7 +90,7 @@ The **MSE** is mean of all the squared errors for each sample. The smaller the l
 Given the following values:
 
 | No. | *y<sub>true</sub>* | *y<sub>pred</sub>* |
-| :---: | :---: | :---: | :---: | :---: |
+| :---: | :---: | :---: |
 | 1 | 1 | 1 |
 | 2 | 0 | 1 |
 | 3 | 0 | 0 |
