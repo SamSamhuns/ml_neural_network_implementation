@@ -120,7 +120,9 @@ Truncating the heights, weights, and ages by their arithmetic means for easier c
 ### Loss/Cost
 The quantification of the performance measure of a model based on a function known as the **cost or loss** function.
 
-Using the **Mean Square Error (MSE)** loss function:
+Using the **Mean Square Error (MSE)** loss function: 
+
+###### Note that we use <sup>1</sup>&frasl;<sub>n</sub> instead of <sup>1</sup>&frasl;<sub>2n</sub> as seen with similar MSE loss functions in linear regressions as the <sup>1</sup>&frasl;<sub>2</sub> term is a constant which does not matter here as we are optimizing/minimizing this function over other parameters like the weights and biases of the neuron. The squared power term is also a constant so we can actually use any multiple of 2 greater than 2 as the power.
 
 <p align="center">
     <img src='/img/mse_loss_function.png' width='400' />
@@ -238,7 +240,9 @@ Here, *x<sub>1</sub>* is the height, *x<sub>2</sub>* is weight and *x<sub>3</sub
 
 Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> using the following equation:
 
-<b><sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>  = <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> \* <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> \* <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub></b>
+<p align='center'>
+    <b><sup><i>∂L</i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>  = <sup><i>∂L</i> </sup>&frasl;<sub> <i>∂y<sub>pred</sub></i></sub> * <sup><i>∂y<sub>pred</sub></i> </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> * <sup><i>∂h<sub>1</sub></i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub></b>
+</p>
 
 ### Example calculation of the partial derivative
 
