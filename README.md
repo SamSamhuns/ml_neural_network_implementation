@@ -19,7 +19,7 @@ Weighted inputs added together with a bias `b`. Then the sum is passed through a
 
 The activation function turns an unbounded input into a useful predictable form. It compresses inputs in the domain (-&infin;, 	+&infin;) to (0, 1). Large negative numbers become ~0 while large positive numbers become ~1.
 
-One example of the activation function is the sigmoid function. ƒ(x) = 1&frasl;<sub>(1+e<sup>-x</sup>)</sub>
+One example of the activation function is the **sigmoid function**. ƒ(x) = 1&frasl;<sub>(1+e<sup>-x</sup>)</sub>. The **logit function** ƒ(x) = ln( <sup>p</sup>&frasl;<sub>(1-p)</sub> ) is the inverse of the sigmoid function. It maps the probabilties in the range ([0, 1]) to R ((-&infin;, +&infin;)).
 
 ## 1) An instance of a two input neuron
 A two input neuron with weight, *w*=[2,0] and bias *b*=3. And an input of [3,4].
@@ -32,7 +32,7 @@ Using the dot product for concise computation.
 
             y = ƒ((w.x)+b) = f(9) = 0.999
 
-The **logit** of the neuron is equal to the dot product of the input and weights vector added to the bias.
+The **logit** of the neuron is equal to the dot product of the input and weights vector added to the bias. (This is different from the logit function discussed above)
 
 The process of passing inputs forward to get an output is called a **feedforward**.
 
