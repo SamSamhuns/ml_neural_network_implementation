@@ -120,7 +120,7 @@ Truncating the heights, weights, and ages by their arithmetic means for easier c
 ### Loss/Cost
 The quantification of the performance measure of a model based on a function known as the **cost or loss** function.
 
-Using the **Mean Square Error (MSE)** loss function: 
+Using the **Mean Square Error (MSE)** loss function:
 
 ###### Note that we use <sup>1</sup>&frasl;<sub>n</sub> instead of <sup>1</sup>&frasl;<sub>2n</sub> as seen with similar MSE loss functions in linear regressions as the <sup>1</sup>&frasl;<sub>2</sub> term is a constant which does not matter here as we are optimizing/minimizing this function over other parameters like the weights and biases of the neuron. The squared power term is also a constant so we can actually use any multiple of 2 greater than 2 as the power.
 
@@ -151,7 +151,8 @@ Given the following values:
 | 5 | 0 | 0 |
 | 6 | 1 | 1 |
 
-MSE = <sup>1</sup>&frasl;<sub>6</sub> (0+1+0+0+0+0) = 0.166
+<!--$$MSE = \frac{1}{6} (0+1+0+0+0+0) = 0.166 $$-->
+<img src='img/eq01.png' />
 
 ### Calculating MSE loss
 
@@ -176,10 +177,11 @@ If we just look at sample 1 from our data.
 | 1 | 103 | 2 | 10 | 1 |
 
 Here, calculating the MSE
+<!-- \frac {1} {1} \sum_{i=1}^{1} (y_{true} - y_{pred})^2 -->
+<img src='img/eq02.png' width='200'/>
 
-*L* = <sup>1</sup>&frasl;<sub>1</sub> ∑<sup><sup>1</sup></sup><sub><sub>i=1</sub></sub> ( *y<sub>true</sub>* - *y<sub>pred</sub>* )<sup>2<sup>
-
-*L* = ( 1 - *y<sub>pred</sub>* )<sup>2<sup>
+<!-- L = (1-y_{pred})^2 -->
+<img src='img/eq03.png' width='200'/>
 
 The loss of a function can also be represented as function of weights and biases of the neurons involved.
 
