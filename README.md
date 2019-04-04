@@ -221,12 +221,13 @@ where ƒ represents the sigmoid function. So:
   </br></br>
 </p>
 
-Doing the same **back propagation** calculation for <sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
+This method of using the *chain rule* recursively is known as **back propagation**.
+Now, doing the same back propagation calculation for <sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
 
 <p align='center'>
-  <i>h<sub>1</sub></i> = ƒ( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>3</sub>.x<sub>2</sub></i> + <i>w<sub>5</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )
+  <i>h<sub>1</sub></i> = ƒ( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>2</sub>.x<sub>2</sub></i> + <i>w<sub>3</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )
   </br>
-  <b><sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <i>x<sub>1</sub></i> * ƒ<sup>'</sup>( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>3</sub>.x<sub>2</sub></i> + <i>w<sub>5</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )</b>
+  <b><sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <i>x<sub>1</sub></i> * ƒ<sup>'</sup>( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>2</sub>.x<sub>2</sub></i> + <i>w<sub>3</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )</b>
   </br></br>
 </p>
 
@@ -252,11 +253,11 @@ Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>
 
 Assuming there is a single row in our dataset and initializing all weights to 1 and all biases to 0:
 
-    h1 = ƒ( w1x1 + w3x2 + w5x3 + b1)
+    h1 = ƒ( w1x1 + w2x2 + w3x3 + b1)
        = f ( 103 + 2 + 10 + 0 )
        = 0.99999999999999
 
-    h2 = ƒ( w2x1 + w4x2 + w6x3 + b2) = 0.99999999999999
+    h2 = ƒ( w4x1 + w5x2 + w6x3 + b2) = 0.99999999999999
 
     o1 = ƒ( w7h1 + w8h2 + b3)
        = ƒ( 0.99999999999999 + 0.99999999999999 + 0 )
@@ -284,7 +285,7 @@ Now, if we calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
   0.105
   </br></br>
 
-  <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> =  *x<sub>1</sub>* \* ƒ<sup>'</sup>( *w<sub>1</sub>.x<sub>1</sub>* + *w<sub>3</sub>.x<sub>2</sub>* + *w<sub>5</sub>.x<sub>3</sub>* + *b<sub>1</sub>* )
+  <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> =  *x<sub>1</sub>* \* ƒ<sup>'</sup>( *w<sub>1</sub>.x<sub>1</sub>* + *w<sub>2</sub>.x<sub>2</sub>* + *w<sub>3</sub>.x<sub>3</sub>* + *b<sub>1</sub>* )
   </br>
   = 103 \* ƒ<sup>'</sup>(103 + 2 + 10 + 0)
   </br>
