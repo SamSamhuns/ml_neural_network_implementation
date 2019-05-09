@@ -90,32 +90,31 @@ inpt = np.array([2, 3])
 net1.feedforward(inpt) # 0.7216325609518421
 ```
 
-
 ## 3) Training a neural network (Mean Squared Error)
 
 Given the following measurements:
 
-| No. | height | weight | age| gender |
-| :---: | :---: | :---: | :---: | :---: |
-| 1 | 151 | 47 | 63 | m |
-| 2 | 139 | 36 | 63 | f |
-| 3 | 136 | 31 | 65 | f |
-| 4 | 156 | 53 | 41 | m |
-| 5 | 145 | 41 | 51 | f |
-| 6 | 163 | 62 | 35 | m |
+| No.   | height | weight | age   | gender|
+| :---: | :---:  | :---:  | :---: | :---: |
+| 1     | 151    | 47     | 63    | m     |
+| 2     | 139    | 36     | 63    | f     |
+| 3     | 136    | 31     | 65    | f     |
+| 4     | 156    | 53     | 41    | m     |
+| 5     | 145    | 41     | 51    | f     |
+| 6     | 163    | 62     | 35    | m     |
 
 We want our neural network to predict the gender based on the height and weight of the individual first.
 
 Truncating the heights, weights, and ages by their arithmetic means for easier calculation. While males are represented with `1` and females as `0`.
 
-| No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
-| :---: | :---: | :---: | :---: | :---: |
-| 1 | 103 | 2 | 10 | 1 |
-| 2 | 91 | -9 | 10 | 0 |
-| 3 | 88 | -14 | 12 | 0 |
-| 4 | 108 | -8 | -12 | 1 |
-| 5 | 97 | -4 | -2 | 0 |
-| 6 | 115 | 17 | -18 | 1 |
+|   No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
+| :---: |       :---:        |       :---:        |      :---:      | :---:  |
+|   1   |        103         |         2          |       10        |   1    |
+|   2   |        91          |        -9          |       10        |   0    |
+|   3   |        88          |        -14         |       12        |   0    |
+|   4   |        108         |        -8          |      -12        |   1    |
+|   5   |        97          |        -4          |       -2        |   0    |
+|   6   |        115         |        17          |      -18        |   1    |
 
 ### Loss/Cost
 The quantification of the performance measure of a model based on a function known as the **cost or loss** function.
@@ -129,10 +128,10 @@ Using the **Mean Square Error (MSE)** loss function:
 </p>
 
 Here,
-* *n* is the total number of samples.
-* *y* is the predicted variable that is the gender of the individual.
-* *y<sub>true</sub>* is the actual Gender while *y<sub>pred</sub>* is the predicted gender of the individual.
-* **Error** = *y<sub>true</sub>* - *y<sub>pred</sub>*
+*   *n* is the total number of samples.
+*   *y* is the predicted variable that is the gender of the individual.
+*   *y<sub>true</sub>* is the actual Gender while *y<sub>pred</sub>* is the predicted gender of the individual.
+*   **Error** = *y<sub>true</sub>* - *y<sub>pred</sub>*
 
 The **MSE** is mean of all the squared errors for each sample. The smaller the loss, the better the ML model.
 
@@ -158,14 +157,14 @@ Given the following values:
 
 ```python
 def mse(y_true, y_pred):
-  ''' y_true and y_predict are numpy arrays,
-  which represent the true and predicted values
-  '''
-  return ((y_true - y_pred)**2).mean()
+    ''' y_true and y_predict are numpy arrays,
+    which represent the true and predicted values
+    '''
+    return ((y_true - y_pred)**2).mean()
 
-  y_true = np.array([1,0,0,1,0,1])
-  y_pred = np.array([1,1,0,1,0,1])
-  mse(y_true, y_pred) # 0.166
+    y_true = np.array([1,0,0,1,0,1])
+    y_pred = np.array([1,1,0,1,0,1])
+    mse(y_true, y_pred) # 0.166
 ```
 
 ## 4) Training a complete neural network
@@ -314,16 +313,16 @@ The problem of fine tuning the weights and biases so as to minimize the function
 
 *η* is a constant known as the **learning rate** that controls how fast we train our network. Choosing a big *η* might cause our model to overshoot the minima of the cost function and swing around it forever. Choosing too small of a value for *η* might cause our partial derivative slope to never reach this minima.
 
-- If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is negative, <sub> *∂w<sub>1</sub>*</sub> will be increased which will reduce *L*.
-- If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is positive, <sub> *∂w<sub>1</sub>*</sub> will be decreased which will reduce *L*.
+*   If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is negative, <sub> *∂w<sub>1</sub>*</sub> will be increased which will reduce *L*.
+*   If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is positive, <sub> *∂w<sub>1</sub>*</sub> will be decreased which will reduce *L*.
 
 This process has to be repeated for each weight and bias in our network. This way our loss will slowly decrease and our network will improve.
 
 #### Network Training Process
 
-1. Choose **one** sample from our dataset. As Stochastic Gradient Descent works on one sample at a time.
-2. Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>)
-3. Use the SGD update equation to update each weight and bias.
+1.   Choose **one** sample from our dataset. As Stochastic Gradient Descent works on one sample at a time.
+2.   Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>)
+3.   Use the SGD update equation to update each weight and bias.
 
 ## Acknowledgments
-*  Based on Victor Zhou's implementation at <https://victorzhou.com/blog/intro-to-neural-networks/>
+*   Based on Victor Zhou's implementation at <https://victorzhou.com/blog/intro-to-neural-networks/>
