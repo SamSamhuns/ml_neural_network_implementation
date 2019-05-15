@@ -320,9 +320,9 @@ This process has to be repeated for each weight and bias in our network. This wa
 
 #### Network Training Process
 
-1.   Choose **one** sample from our dataset. As Stochastic Gradient Descent works on one sample at a time.
-2.   Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>)
-3.   Use the SGD update equation to update each weight and bias.
+1.    Choose **one** sample from our dataset. As Stochastic Gradient Descent works on one sample at a time.
+2.    Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>)
+3.    Use the SGD update equation to update each weight and bias.
 
 ## Acknowledgments
 *   Based on Victor Zhou's implementation at <https://victorzhou.com/blog/intro-to-neural-networks/>
