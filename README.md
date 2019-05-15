@@ -256,38 +256,30 @@ The neural network predicts that *y<sub>pred</sub>* = 0.88, which is close to th
 
 Now, if we calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
 
-<center><img src='img/eq13.png' width='250'/></center>
-<p align='center'>
-  </br>
-  <img src='img/eq14.png' width='300'/>
-  <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> = -2 ( 1 - *y<sub>pred</sub>* )
-  = -2 ( 1 - 0.88 )
-  = -0.24
-  </br></br></br>
+<img src='img/eq13.png' width='250'/>
+</br></br>
 
+<img src='img/eq14.png' width='420'/>
+</br></br>
 
-  </br></br>
-  1 \* ƒ<sup>'</sup>(0.9999999 + 0.9999999 + 0)
-  </br>
-  ƒ(1.9999999) \*  (1 - ƒ(1.9999999))
-  </br>
-  0.105
-  </br></br>
+<img src='img/eq15.png' width='350'/></br>
+= 1 \* ƒ<sup>'</sup>(0.9999999 + 0.9999999 + 0)
+</br>
+= ƒ(1.9999999) \*  (1 - ƒ(1.9999999))
+</br>
+= 0.105
+</br></br>
 
-  <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> =  *x<sub>1</sub>* \* ƒ<sup>'</sup>( *w<sub>1</sub>.x<sub>1</sub>* + *w<sub>2</sub>.x<sub>2</sub>* + *w<sub>3</sub>.x<sub>3</sub>* + *b<sub>1</sub>* )
-  </br>
-  = 103 \* ƒ<sup>'</sup>(103 + 2 + 10 + 0)
-  </br>
-  = 103 \* ƒ(115)  \* (1 - ƒ(115))
-  </br>
-  = 0.0000000000001
-  </br></br>
+<img src='img/eq16.png' width='420'/></br>
+= 103 \* ƒ<sup>'</sup>(103 + 2 + 10 + 0)
+</br>
+= 103 \* ƒ(115)  \* (1 - ƒ(115))
+</br>
+= 0.0000000000001
+</br></br>
 
-  <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>  = -0.24 \* 0.105 \* 0.0000000000001
-  </br>
-  **-2.52e-15**
-
-</p>
+<img src='img/eq17.png' width='420'/></br>
+= **-2.52e-15**
 
 The negative partial derivative states that increasing *w<sub>1</sub>* would decrease *L* by a tiny fraction.
 
@@ -295,9 +287,7 @@ The negative partial derivative states that increasing *w<sub>1</sub>* would dec
 
 The problem of fine tuning the weights and biases so as to minimize the function *L* is an optimization problem. We can use an algorithm called **stochastic gradient descent (SGD)** for this. SGD is just the following update equation:
 
-<p align='center'>
-    <i>w<sub>1</sub></i> = <i>w<sub>1</sub></i> - <i>η</i> <sup><i>∂L</i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>
-</p>
+<center><img src='img/eq18.png' width='250'/></center></br>
 
 *η* is a constant known as the **learning rate** that controls how fast we train our network. Choosing a big *η* might cause our model to overshoot the minima of the cost function and swing around it forever. Choosing too small of a value for *η* might cause our partial derivative slope to never reach this minima.
 
