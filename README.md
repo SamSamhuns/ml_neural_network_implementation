@@ -94,14 +94,14 @@ net1.feedforward(inpt) # 0.7216325609518421
 
 Given the following measurements:
 
-| No.   | height | weight | age   | gender|
-| :---: | :---:  | :---:  | :---: | :---: |
-| 1     | 151    | 47     | 63    | m     |
-| 2     | 139    | 36     | 63    | f     |
-| 3     | 136    | 31     | 65    | f     |
-| 4     | 156    | 53     | 41    | m     |
-| 5     | 145    | 41     | 51    | f     |
-| 6     | 163    | 62     | 35    | m     |
+| No.   | height | weight | age   | gender |
+| :---: | :---:  | :---:  | :---: | :---:  |
+| 1     | 151    | 47     | 63    | m      |
+| 2     | 139    | 36     | 63    | f      |
+| 3     | 136    | 31     | 65    | f      |
+| 4     | 156    | 53     | 41    | m      |
+| 5     | 145    | 41     | 51    | f      |
+| 6     | 163    | 62     | 35    | m      |
 
 We want our neural network to predict the gender based on the height and weight of the individual first.
 
