@@ -178,10 +178,10 @@ If we just look at sample 1 from our data.
 | 1     | 103                | 2                  | 10              | 1      |
 
 Here, calculating the MSE
-<!-- \frac {1} {1} \sum_{i=1}^{1} (y_{true} - y_{pred})^2 -->
+<!-- $ \frac {1} {1} \sum_{i=1}^{1} (y_{true} - y_{pred})^2 $ -->
 <img src='img/eq02.png' width='200'/>
 
-<!-- L = (1-y_{pred})^2 -->
+<!-- $ L = (1-y_{pred})^2 $ -->
 <img src='img/eq03.png' width='200'/>
 
 The loss of a function can also be represented as function of weights and biases of the neurons involved.
@@ -190,63 +190,49 @@ The loss of a function can also be represented as function of weights and biases
 
 Now, loss can be represented as a multivariate function,
 
-<p align='center'>
-    <i>L (w1, w2, w3, w4, w5, w6, b1, b2, b2)</i>
-</br></br>
-</p>
+<!-- $L (w1, w2,  w3, w4, w5, w6, b1, b2, b3)$ -->
+<center><img src='img/eq04.png' width='400'/></center>
+</br>
 
 Now, to minimize this loss function we have to observe how *L* might change when one of its parameters, such as *w1* is changed. For these calculations we can make use of the **partial derivate**, <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>.
 
 We can rewrite this partial derivative in terms of <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> like:
 
-<p align='center'>
-    <b><sup><i>∂L</i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <sup><i>∂L</i></sup>&frasl;<sub><i>∂y<sub>pred</sub></i> </sub> * <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub></b>
-</br>
-</br>
-</p>
+<center><img src='img/eq05.png' width='200'/></center>
 
 We calculated that *L* = ( 1 - *y<sub>pred</sub>* )<sup>2</sup>, so:
 
-<p align='center'>
-    <b><sup><i>∂L</i> </sup>&frasl;<sub><i>∂y<sub>pred</sub></i> </sub> = -2 ( 1 - <i>y<sub>pred</sub></i> )</b>
-</br></br>
-</p>
+<center><img src='img/eq06.png' width='200'/></center>
+</br>
 
 To calculate  <sup>*∂y<sub>pred</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>, given that *h1, h2*, and *o2* represent the outputs of the respective neurons,the final output:
 
 *y<sub>pred</sub>* = *o<sub>1</sub>* = ƒ( *w<sub>7</sub>.h<sub>1</sub>* + *w<sub>8</sub>.h<sub>2</sub>* + *b<sub>3</sub>* )
 where ƒ represents the sigmoid function. So:
 
-<p align='center'>
-  <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> * <sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>
-  </br>
-  <b><sup><i>∂y<sub>pred</sub></i>  </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> = <i>w<sub>7</sub></i> * ƒ<sup>'</sup>( <i>w<sub>7</sub>.h<sub>1</sub></i> + <i>w<sub>8</sub>.h<sub>2</sub></i> + <i>b<sub>3</sub></i> )</b>
-  </br></br>
-</p>
+<center><img src='img/eq07.png' width='300'/></center>
+<br/>
+<center><img src='img/eq08.png' width='400'/></center>
+<br/>
 
 This method of using the *chain rule* recursively is known as **back propagation**.
-Now, doing the same back propagation calculation for <sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
+Now, doing the same back propagation calculation for <sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :</br></br>
 
-<p align='center'>
-  <i>h<sub>1</sub></i> = ƒ( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>2</sub>.x<sub>2</sub></i> + <i>w<sub>3</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )
-  </br>
-  <b><sup><i>∂h<sub>1</sub></i>  </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub> = <i>x<sub>1</sub></i> * ƒ<sup>'</sup>( <i>w<sub>1</sub>.x<sub>1</sub></i> + <i>w<sub>2</sub>.x<sub>2</sub></i> + <i>w<sub>3</sub>.x<sub>3</sub></i> + <i>b<sub>1</sub></i> )</b>
-  </br></br>
-</p>
+<center><img src='img/eq09.png' width='400'/></center>
+<br/>
+<center><img src='img/eq10.png' width='400'/></center>
+<br/>
 
 Here, *x<sub>1</sub>* is the height, *x<sub>2</sub>* is weight and *x<sub>3</sub>* is the age. *ƒ<sup>'</sup>( x )* is the derivate of the sigmoid function:
 
-<p align='center'>
-  <i>ƒ( x )</i> = <sup><i>1</i>  </sup>&frasl;<sub> <i>1 + e<sup>-x</sup></i></sub></br>
-  <i>ƒ<sup>'</sup>( x )</i> = - ( 1 + e<sup>-x</sup> )<sup>-2</sup> . ( - e<sup>-x</sup> ) = <sup>1</sup>&frasl;<sub> ( 1 + e<sup>-x</sup> )</sub> * ( 1 - <sup>1  </sup>&frasl;<sub> 1 + e<sup>-x</sup></sub> ) = <b>ƒ( x ) * (1 - ƒ( x ))</b>
-  </br></br>
-</p>
+<center><img src='img/eq11.png' width='150'/></center>
+</br>
+<center><img src='img/eq12.png' width='550'/></center>
+</br>
 
-Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> using the following equation:
+Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> using the following equation:</br></br>
 
-<p align='center'>
-    <b><sup><i>∂L</i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub>  = <sup><i>∂L</i> </sup>&frasl;<sub> <i>∂y<sub>pred</sub></i></sub> * <sup><i>∂y<sub>pred</sub></i> </sup>&frasl;<sub> <i>∂h<sub>1</sub></i></sub> * <sup><i>∂h<sub>1</sub></i> </sup>&frasl;<sub> <i>∂w<sub>1</sub></i></sub></b>
-</p>
+<center><img src='img/eq13.png' width='400'/></center>
 
 ### Example calculation of the partial derivative
 
@@ -270,17 +256,17 @@ The neural network predicts that *y<sub>pred</sub>* = 0.88, which is close to th
 
 Now, if we calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
 
+<center><img src='img/eq13.png' width='250'/></center>
 <p align='center'>
-  <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>  = <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> \* <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> \* <sup>*∂h<sub>1</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>
-  </br></br>
-
+  </br>
+  <img src='img/eq14.png' width='300'/>
   <sup>*∂L* </sup>&frasl;<sub> *∂y<sub>pred</sub>*</sub> = -2 ( 1 - *y<sub>pred</sub>* )
   = -2 ( 1 - 0.88 )
   = -0.24
-  </br></br>
+  </br></br></br>
 
-  <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂h<sub>1</sub>*</sub> = *w<sub>7</sub>* \* ƒ<sup>'</sup>( *w<sub>7</sub>.h<sub>1</sub>* + *w<sub>8</sub>.h<sub>2</sub>* + *b<sub>3</sub>* )
-  </br>
+
+  </br></br>
   1 \* ƒ<sup>'</sup>(0.9999999 + 0.9999999 + 0)
   </br>
   ƒ(1.9999999) \*  (1 - ƒ(1.9999999))
