@@ -248,9 +248,9 @@ Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>
 
 ### Example calculation of the partial derivative
 
-| No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
-| :---: | :---: | :---: | :---: | :---: |
-| 1 | 103 | 2 | 10 | 1 |
+| No.   | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
+| :---: | :---:              | :---:              | :---:           | :---:  |
+| 1     | 103                | 2                  | 10              | 1      |
 
 Assuming there is a single row in our dataset and initializing all weights to 1 and all biases to 0:
 
@@ -320,9 +320,9 @@ This process has to be repeated for each weight and bias in our network. This wa
 
 #### Network Training Process
 
-1.    Choose **one** sample from our dataset. As Stochastic Gradient Descent works on one sample at a time.
-2.    Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>)
-3.    Use the SGD update equation to update each weight and bias.
+1.  Choose **one** sample from our dataset. As Stochastic Gradient Descent works on one sample at a time.
+2.  Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>)
+3.  Use the SGD update equation to update each weight and bias.
 
 ## Acknowledgments
 *   Based on Victor Zhou's implementation at <https://victorzhou.com/blog/intro-to-neural-networks/>
