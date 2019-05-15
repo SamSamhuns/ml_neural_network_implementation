@@ -19,10 +19,10 @@ Weighted inputs added together with a bias `b`. Then the sum is passed through a
 
 The activation function turns an unbounded input into a useful predictable form. It compresses inputs in the domain (-&infin;, 	+&infin;) to (0, 1). Large negative numbers become ~0 while large positive numbers become ~1.
 
-One example of the activation function is the **sigmoid function**. ƒ(x) = 1&frasl;<sub>(1+e<sup>-x</sup>)</sub>. The **logit function** ƒ(x) = ln( <sup>p</sup>&frasl;<sub>(1-p)</sub> ) is the inverse of the sigmoid function. It maps the probabilties in the range ([0, 1]) to R ((-&infin;, +&infin;)).
+One example of the activation function is the **sigmoid function**. ƒ(x) = 1&frasl;<sub>(1+e<sup>-x</sup>)</sub>. The **logit function** ƒ(x) = ln( <sup>p</sup>&frasl;<sub>(1-p)</sub> ) is the inverse of the sigmoid function. It maps the probabilties in the range (\[0, 1]) to R ((-&infin;, +&infin;)).
 
 ## 1) An instance of a two input neuron
-A two input neuron with weight, *w*=[2,0] and bias *b*=3. And an input of [3,4].
+A two input neuron with weight, *w*=\[2,0] and bias *b*=3. And an input of \[3,4].
 
 Using the dot product for concise computation.
 
@@ -108,20 +108,20 @@ We want our neural network to predict the gender based on the height and weight 
 Truncating the heights, weights, and ages by their arithmetic means for easier calculation. While males are represented with `1` and females as `0`.
 
 |   No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
-| :---: |       :---:        |       :---:        |      :---:      | :---:  |
-|   1   |        103         |         2          |       10        |   1    |
-|   2   |        91          |        -9          |       10        |   0    |
-|   3   |        88          |        -14         |       12        |   0    |
-|   4   |        108         |        -8          |      -12        |   1    |
-|   5   |        97          |        -4          |       -2        |   0    |
-|   6   |        115         |        17          |      -18        |   1    |
+| :---: | :---:              | :---:              | :---:           | :---:  |
+| 1     | 103                | 2                  | 10              | 1      |
+| 2     | 91                 | -9                 | 10              | 0      |
+| 3     | 88                 | -14                | 12              | 0      |
+| 4     | 108                | -8                 | -12             | 1      |
+| 5     | 97                 | -4                 | -2              | 0      |
+| 6     | 115                | 17                 | -18             | 1      |
 
 ### Loss/Cost
 The quantification of the performance measure of a model based on a function known as the **cost or loss** function.
 
 Using the **Mean Square Error (MSE)** loss function:
 
-###### Note that we use <sup>1</sup>&frasl;<sub>n</sub> instead of <sup>1</sup>&frasl;<sub>2n</sub> as seen with similar MSE loss functions in linear regressions as the <sup>1</sup>&frasl;<sub>2</sub> term is a constant which does not matter here as we are optimizing/minimizing this function over other parameters like the weights and biases of the neuron. The squared power term is also a constant so we can actually use any multiple of 2 greater than 2 as the power.
+<sub>Note that we use <sup>1</sup>&frasl;<sub>n</sub> instead of <sup>1</sup>&frasl;<sub>2n</sub> as seen with similar MSE loss functions in linear regressions as the <sup>1</sup>&frasl;<sub>2</sub> term is a constant which does not matter here as we are optimizing/minimizing this function over other parameters like the weights and biases of the neuron. The squared power term is also a constant so we can actually use any multiple of 2 greater than 2 as the power. </sub>
 
 <p align="center">
     <img src='/img/mse_loss_function.png' width='400' />
@@ -141,14 +141,14 @@ The **MSE** is mean of all the squared errors for each sample. The smaller the l
 
 Given the following values:
 
-| No. | *y<sub>true</sub>* | *y<sub>pred</sub>* |
-| :---: | :---: | :---: |
-| 1 | 1 | 1 |
-| 2 | 0 | 1 |
-| 3 | 0 | 0 |
-| 4 | 1 | 1 |
-| 5 | 0 | 0 |
-| 6 | 1 | 1 |
+| No.   | *y<sub>true</sub>* | *y<sub>pred</sub>* |
+| :---: | :---:              | :---:              |
+| 1     | 1                  | 1                  |
+| 2     | 0                  | 1                  |
+| 3     | 0                  | 0                  |
+| 4     | 1                  | 1                  |
+| 5     | 0                  | 0                  |
+| 6     | 1                  | 1                  |
 
 <!--$$MSE = \frac{1}{6} (0+1+0+0+0+0) = 0.166 $$-->
 <img src='img/eq01.png' />
@@ -171,9 +171,9 @@ def mse(y_true, y_pred):
 
 If we just look at sample 1 from our data.
 
-| No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
-| :---: | :---: | :---: | :---: | :---: |
-| 1 | 103 | 2 | 10 | 1 |
+| No.   | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
+| :---: | :---:              | :---:              | :---:           | :---:  |
+| 1     | 103                | 2                  | 10              | 1      |
 
 Here, calculating the MSE
 <!-- \frac {1} {1} \sum_{i=1}^{1} (y_{true} - y_{pred})^2 -->
