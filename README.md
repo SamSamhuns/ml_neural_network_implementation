@@ -1,6 +1,7 @@
 # Neural Network simple implementation
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/90d0c0e0c41e4cc4b0adb7b2136027f1)](https://www.codacy.com/app/samhunsadamant/neural_network_implementation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SamSamhuns/neural_network_implementation&amp;utm_campaign=Badge_Grade)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A simple implementation of a neural network in python. This is not how actual neural networks are implemented and this is an example for only learning purposes.
 
