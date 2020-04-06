@@ -285,7 +285,9 @@ The negative partial derivative states that increasing *w<sub>1</sub>* would dec
 
 ### Stochastic Gradient Training
 
-The problem of fine tuning the weights and biases so as to minimize the function *L* is an optimization problem. We can use an algorithm called **stochastic gradient descent (SGD)** for this. SGD is just the following update equation:
+The problem of fine tuning the weights and biases so as to minimize the function *L* is an optimization problem. We can use an algorithm called **stochastic gradient descent (SGD)** for this. In SGD, the weights of the network are updated every time a single training example is processed compared to **Batch gradient descent (BGD)** where the weights are only updated once an epoch or all the training examples have been iterated once.
+
+SGD is just the following update equation:
 
 <center><img src='img/eq18.png' width='250'/></center></br>
 
