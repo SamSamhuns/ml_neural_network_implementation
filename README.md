@@ -44,7 +44,6 @@ import numpy as np
 # A simple two input neuron example
 
 def sigmoid(x):
-  '''Sigmoid function'''
   return 1/(1+np.exp(-x))
 
 class Neuron:
@@ -165,9 +164,9 @@ def mse(y_true, y_pred):
     '''
     return ((y_true - y_pred)**2).mean()
 
-    y_true = np.array([1,0,0,1,0,1])
-    y_pred = np.array([1,1,0,1,0,1])
-    mse(y_true, y_pred) # 0.166
+y_true = np.array([1,0,0,1,0,1])
+y_pred = np.array([1,1,0,1,0,1])
+mse(y_true, y_pred) # 0.166
 ```
 
 ## 4) Training a complete neural network
