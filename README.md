@@ -1,13 +1,13 @@
 # Neural Network simple implementation
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/90d0c0e0c41e4cc4b0adb7b2136027f1)](https://www.codacy.com/app/samhunsadamant/neural_network_implementation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SamSamhuns/neural_network_implementation&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/90d0c0e0c41e4cc4b0adb7b2136027f1)](https://www.codacy.com/app/samhunsadamant/neural_network_implementation?utm_source=github.com&utm_medium=referral&utm_content=SamSamhuns/neural_network_implementation&utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A simple implementation of a neural network in python. This is not how actual neural networks are implemented and this is an example for only learning purposes.
 
 ## Neuron
 
-A neuron is a component of machine learning that takes *n* inputs, does math with the inputs and outputs a single value.
+A neuron is a component of machine learning that takes _n_ inputs, does math with the inputs and outputs a single value.
 
 Simple neuron with two inputs.
 
@@ -20,12 +20,13 @@ Inputs x<sub>1</sub> and x<sub>2</sub>, multiplied by weights w<sub>1</sub> and 
 
 Weighted inputs added together with a bias `b`. Then the sum is passed through an activation function, `y=ƒ(x1 * w1 + x2 * w2 + b)`.
 
-The activation function turns an unbounded input into a useful predictable form. It compresses inputs in the domain (-&infin;, 	+&infin;) to (0, 1). Large negative numbers become ~0 while large positive numbers become ~1.
+The activation function turns an unbounded input into a useful predictable form. It compresses inputs in the domain (-∞, 	+∞) to (0, 1). Large negative numbers become ~0 while large positive numbers become ~1.
 
-One example of the activation function is the **sigmoid function**. ƒ(x) = 1&frasl;<sub>(1+e<sup>-x</sup>)</sub>. The **logit function** ƒ(x) = ln( <sup>p</sup>&frasl;<sub>(1-p)</sub> ) is the inverse of the sigmoid function. It maps the probabilties in the range (\[0, 1]) to R ((-&infin;, +&infin;)).
+One example of the activation function is the **sigmoid function**. ƒ(x) = 1⁄<sub>(1+e<sup>-x</sup>)</sub>. The **logit function** ƒ(x) = ln( <sup>p</sup>⁄<sub>(1-p)</sub> ) is the inverse of the sigmoid function. It maps the probabilties in the range (\[0, 1]) to R ((-∞, +∞)).
 
 ## 1) An instance of a two input neuron
-A two input neuron with weight, *w*=\[2,0] and bias *b*=3. And an input of \[3,4].
+
+A two input neuron with weight, _w_=\[2,0] and bias _b_=3. And an input of \[3,4].
 
 Using the dot product for concise computation.
 
@@ -66,6 +67,7 @@ n1.feedforward(inputs) # 0.999999694097773
 ```
 
 ## 2) A neural network
+
 It a collection of neurons that are connected together. A **Deep Neural Network** is a network with multiple hidden layers.
 
 <img src='img/simple_neural_network.png' />
@@ -96,63 +98,66 @@ net1.feedforward(inpt) # 0.7216325609518421
 
 Given the following measurements:
 
-| No.   | height | weight | age   | gender |
-| :---: | :---:  | :---:  | :---: | :---:  |
-| 1     | 151    | 47     | 63    | m      |
-| 2     | 139    | 36     | 63    | f      |
-| 3     | 136    | 31     | 65    | f      |
-| 4     | 156    | 53     | 41    | m      |
-| 5     | 145    | 41     | 51    | f      |
-| 6     | 163    | 62     | 35    | m      |
+| No. | height | weight | age | gender |
+| :-: | :----: | :----: | :-: | :----: |
+|  1  |   151  |   47   |  63 |    m   |
+|  2  |   139  |   36   |  63 |    f   |
+|  3  |   136  |   31   |  65 |    f   |
+|  4  |   156  |   53   |  41 |    m   |
+|  5  |   145  |   41   |  51 |    f   |
+|  6  |   163  |   62   |  35 |    m   |
 
 We want our neural network to predict the gender based on the height and weight of the individual first.
 
 Truncating the heights, weights, and ages by their arithmetic means for easier calculation. While males are represented with `1` and females as `0`.
 
-|   No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
-| :---: | :---:              | :---:              | :---:           | :---:  |
-| 1     | 103                | 2                  | 10              | 1      |
-| 2     | 91                 | -9                 | 10              | 0      |
-| 3     | 88                 | -14                | 12              | 0      |
-| 4     | 108                | -8                 | -12             | 1      |
-| 5     | 97                 | -4                 | -2              | 0      |
-| 6     | 115                | 17                 | -18             | 1      |
+| No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
+| :-: | :----------------: | :----------------: | :-------------: | :----: |
+|  1  |         103        |          2         |        10       |    1   |
+|  2  |         91         |         -9         |        10       |    0   |
+|  3  |         88         |         -14        |        12       |    0   |
+|  4  |         108        |         -8         |       -12       |    1   |
+|  5  |         97         |         -4         |        -2       |    0   |
+|  6  |         115        |         17         |       -18       |    1   |
 
 ### Loss/Cost
+
 The quantification of the performance measure of a model based on a function known as the **cost or loss** function.
 
 Using the **Mean Square Error (MSE)** loss function:
 
-<sub>Note that we use <sup>1</sup>&frasl;<sub>n</sub> instead of <sup>1</sup>&frasl;<sub>2n</sub> as seen with similar MSE loss functions in linear regressions as the <sup>1</sup>&frasl;<sub>2</sub> term is a constant which does not matter here as we are optimizing/minimizing this function over other parameters like the weights and biases of the neuron. The squared power term is also a constant so we can actually use any multiple of 2 greater than 2 as the power. </sub>
+<sub>Note that we use <sup>1</sup>⁄<sub>n</sub> instead of <sup>1</sup>⁄<sub>2n</sub> as seen with similar MSE loss functions in linear regressions as the <sup>1</sup>⁄<sub>2</sub> term is a constant which does not matter here as we are optimizing/minimizing this function over other parameters like the weights and biases of the neuron. The squared power term is also a constant so we can actually use any multiple of 2 greater than 2 as the power. </sub>
 
 <p align="center">
     <img src='/img/mse_loss_function.png' width='400' />
 </p>
 
 Here,
-*   *n* is the total number of samples.
-*   *y* is the predicted variable that is the gender of the individual.
-*   *y<sub>true</sub>* is the actual Gender while *y<sub>pred</sub>* is the predicted gender of the individual.
-*   **Error** = *y<sub>true</sub>* - *y<sub>pred</sub>*
+
+-   _n_ is the total number of samples.
+-   _y_ is the predicted variable that is the gender of the individual.
+-   _y<sub>true</sub>_ is the actual Gender while _y<sub>pred</sub>_ is the predicted gender of the individual.
+-   **Error** = _y<sub>true</sub>_ - _y<sub>pred</sub>_
 
 The **MSE** is mean of all the squared errors for each sample. The smaller the loss, the better the ML model.
 
-**Training a neural network** refers to reducing this loss or minimizing the *loss/cost function*.
+**Training a neural network** refers to reducing this loss or minimizing the _loss/cost function_.
 
 ### Example of loss calculation
 
 Given the following values:
 
-| No.   | *y<sub>true</sub>* | *y<sub>pred</sub>* |
-| :---: | :---:              | :---:              |
-| 1     | 1                  | 1                  |
-| 2     | 0                  | 1                  |
-| 3     | 0                  | 0                  |
-| 4     | 1                  | 1                  |
-| 5     | 0                  | 0                  |
-| 6     | 1                  | 1                  |
+| No. | _y<sub>true</sub>_ | _y<sub>pred</sub>_ |
+| :-: | :----------------: | :----------------: |
+|  1  |          1         |          1         |
+|  2  |          0         |          1         |
+|  3  |          0         |          0         |
+|  4  |          1         |          1         |
+|  5  |          0         |          0         |
+|  6  |          1         |          1         |
 
 <!--$$MSE = \frac{1}{6} (0+1+0+0+0+0) = 0.166 $$-->
+
 <img src='img/eq01.png' />
 
 ### Calculating MSE loss
@@ -173,15 +178,18 @@ mse(y_true, y_pred) # 0.166
 
 If we just look at sample 1 from our data.
 
-| No.   | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
-| :---: | :---:              | :---:              | :---:           | :---:  |
-| 1     | 103                | 2                  | 10              | 1      |
+| No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
+| :-: | :----------------: | :----------------: | :-------------: | :----: |
+|  1  |         103        |          2         |        10       |    1   |
 
 Here, calculating the MSE
+
 <!-- $ \frac {1} {1} \sum_{i=1}^{1} (y_{true} - y_{pred})^2 $ -->
+
 <img src='img/eq02.png' width='200'/>
 
 <!-- $ L = (1-y_{pred})^2 $ -->
+
 <img src='img/eq03.png' width='200'/>
 
 The loss of a function can also be represented as function of weights and biases of the neurons involved.
@@ -191,23 +199,24 @@ The loss of a function can also be represented as function of weights and biases
 Now, loss can be represented as a multivariate function,
 
 <!-- $L (w1, w2,  w3, w4, w5, w6, b1, b2, b3)$ -->
+
 <center><img src='img/eq04.png' width='400'/></center>
 </br>
 
-Now, to minimize this loss function we have to observe how *L* might change when one of its parameters, such as *w1* is changed. For these calculations we can make use of the **partial derivate**, <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>.
+Now, to minimize this loss function we have to observe how _L_ might change when one of its parameters, such as _w1_ is changed. For these calculations we can make use of the **partial derivate**, <sup>_∂L_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub>.
 
-We can rewrite this partial derivative in terms of <sup>*∂y<sub>pred</sub>* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> like:
+We can rewrite this partial derivative in terms of <sup>_∂y<sub>pred</sub>_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub> like:
 
 <center><img src='img/eq05.png' width='200'/></center>
 
-We calculated that *L* = ( 1 - *y<sub>pred</sub>* )<sup>2</sup>, so:
+We calculated that _L_ = ( 1 - _y<sub>pred</sub>_ )<sup>2</sup>, so:
 
 <center><img src='img/eq06.png' width='200'/></center>
 </br>
 
-To calculate  <sup>*∂y<sub>pred</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>, given that *h1, h2*, and *o2* represent the outputs of the respective neurons,the final output:
+To calculate  <sup>_∂y<sub>pred</sub>_  </sup>⁄<sub> _∂w<sub>1</sub>_</sub>, given that _h1, h2_, and _o2_ represent the outputs of the respective neurons,the final output:
 
-*y<sub>pred</sub>* = *o<sub>1</sub>* = ƒ( *w<sub>7</sub>.h<sub>1</sub>* + *w<sub>8</sub>.h<sub>2</sub>* + *b<sub>3</sub>* )
+_y<sub>pred</sub>_ = _o<sub>1</sub>_ = ƒ( _w<sub>7</sub>.h<sub>1</sub>_ + _w<sub>8</sub>.h<sub>2</sub>_ + _b<sub>3</sub>_ )
 where ƒ represents the sigmoid function. So:
 
 <center><img src='img/eq07.png' width='300'/></center>
@@ -215,30 +224,30 @@ where ƒ represents the sigmoid function. So:
 <center><img src='img/eq08.png' width='400'/></center>
 <br/>
 
-This method of using the *chain rule* recursively is known as **back propagation**.
-Now, doing the same back propagation calculation for <sup>*∂h<sub>1</sub>*  </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :</br></br>
+This method of using the _chain rule_ recursively is known as **back propagation**.
+Now, doing the same back propagation calculation for <sup>_∂h<sub>1</sub>_  </sup>⁄<sub> _∂w<sub>1</sub>_</sub> :</br></br>
 
 <center><img src='img/eq09.png' width='400'/></center>
 <br/>
 <center><img src='img/eq10.png' width='400'/></center>
 <br/>
 
-Here, *x<sub>1</sub>* is the height, *x<sub>2</sub>* is weight and *x<sub>3</sub>* is the age. *ƒ<sup>'</sup>( x )* is the derivate of the sigmoid function:
+Here, _x<sub>1</sub>_ is the height, _x<sub>2</sub>_ is weight and _x<sub>3</sub>_ is the age. _ƒ<sup>'</sup>( x )_ is the derivate of the sigmoid function:
 
 <center><img src='img/eq11.png' width='150'/></center>
 </br>
 <center><img src='img/eq12.png' width='550'/></center>
 </br>
 
-Finally we can calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> using the following equation:</br></br>
+Finally we can calculate <sup>_∂L_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub> using the following equation:</br></br>
 
 <center><img src='img/eq13.png' width='400'/></center>
 
 ### Example calculation of the partial derivative
 
-| No.   | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
-| :---: | :---:              | :---:              | :---:           | :---:  |
-| 1     | 103                | 2                  | 10              | 1      |
+| No. | height (reduce 48) | weight (reduce 45) | age (reduce 53) | gender |
+| :-: | :----------------: | :----------------: | :-------------: | :----: |
+|  1  |         103        |          2         |        10       |    1   |
 
 Assuming there is a single row in our dataset and initializing all weights to 1 and all biases to 0:
 
@@ -252,9 +261,9 @@ Assuming there is a single row in our dataset and initializing all weights to 1 
        = ƒ( 0.99999999999999 + 0.99999999999999 + 0 )
        = 0.88
 
-The neural network predicts that *y<sub>pred</sub>* = 0.88, which is close to the true value 1(male) but not exactly 1.
+The neural network predicts that _y<sub>pred</sub>_ = 0.88, which is close to the true value 1(male) but not exactly 1.
 
-Now, if we calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
+Now, if we calculate <sup>_∂L_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub> :
 
 <img src='img/eq13.png' width='250'/>
 </br></br>
@@ -281,28 +290,62 @@ Now, if we calculate <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> :
 <img src='img/eq17.png' width='420'/></br>
 = **-2.52e-15**
 
-The negative partial derivative states that increasing *w<sub>1</sub>* would decrease *L* by a tiny fraction.
+The negative partial derivative states that increasing _w<sub>1</sub>_ would decrease _L_ by a tiny fraction.
 
 ### Stochastic Gradient Training
 
-The problem of fine tuning the weights and biases so as to minimize the function *L* is an optimization problem. We can use an algorithm called **stochastic gradient descent (SGD)** for this. In SGD, the weights of the network are updated every time a single training example is processed compared to **Batch gradient descent (BGD)** where the weights are only updated once an epoch or all the training examples have been iterated once.
+The problem of fine tuning the weights and biases so as to minimize the function _L_ is an optimization problem. We can use an algorithm called **stochastic gradient descent (SGD)** for this. In SGD, the weights of the network are updated every time a single training example is processed compared to **Batch gradient descent (BGD)** where the weights are only updated once an epoch or all the training examples have been iterated once.
 
 SGD is just the following update equation:
 
 <center><img src='img/eq18.png' width='250'/></center></br>
 
-*η* is a constant known as the **learning rate** that controls how fast we train our network. Choosing a big *η* might cause our model to overshoot the minima of the cost function and swing around it forever. Choosing too small of a value for *η* might cause our partial derivative slope to never reach this minima.
+_η_ is a constant known as the **learning rate** that controls how fast we train our network. Choosing a big _η_ might cause our model to overshoot the minima of the cost function and swing around it forever. Choosing too small of a value for _η_ might cause our partial derivative slope to never reach this minima.
 
-*   If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is negative, <sub> *∂w<sub>1</sub>*</sub> will be increased which will reduce *L*.
-*   If <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub> is positive, <sub> *∂w<sub>1</sub>*</sub> will be decreased which will reduce *L*.
+-   If <sup>_∂L_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub> is negative, <sub> _∂w<sub>1</sub>_</sub> will be increased which will reduce _L_.
+-   If <sup>_∂L_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub> is positive, <sub> _∂w<sub>1</sub>_</sub> will be decreased which will reduce _L_.
 
 This process has to be repeated for each weight and bias in our network. This way our loss will slowly decrease and our network will improve.
 
 #### Network Training Process
 
 1.  Choose **one** sample from our dataset. As Stochastic Gradient Descent works on one sample at a time.
-2.  Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>*∂L* </sup>&frasl;<sub> *∂w<sub>1</sub>*</sub>)
+2.  Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>_∂L_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub>)
 3.  Use the SGD update equation to update each weight and bias.
 
+## Supplementary Information
+
+### Running Jupyter Notebook on a server
+
+-   **Login into Server and set up a jupyter notebook instance**
+
+1.  `$ ssh username@server_ip_addr`
+2.  Install anaconda in the server
+3.  `$ conda create -n env_name python=3.7`
+4.  `$ conda activate env_name`
+5.  `$ conda install python_package_name`
+6.  `$ conda info --env`
+7.  `$ conda list`
+
+-   **From local machine terminal, run:**
+
+8.  `$ ssh -L 8000:localhost:8888 username@your_server_ip`
+9.  `$ jupyter notebook --no-browser`
+10. On your local machine, go to `http://localhost:8000` and enter token from server.
+
+From inside the jupyter notebook test modules
+11\. `!conda list`
+
+### Conda environment setup
+
+Note: To export current conda env
+
+`$ conda-env  export -n your_env_name > your_env_name.yml`
+
+To create new environment using yml configuration file run:
+
+`$ conda-env create -n new_env -f=\path\to\base.yml`
+
 ## Acknowledgments
-*   Based on Victor Zhou's implementation at <https://victorzhou.com/blog/intro-to-neural-networks/>
+
+-   Based on Victor Zhou's implementation at <https://victorzhou.com/blog/intro-to-neural-networks/>
