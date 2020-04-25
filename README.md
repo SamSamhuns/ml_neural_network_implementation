@@ -313,11 +313,61 @@ This process has to be repeated for each weight and bias in our network. This wa
 2.  Calculate all the partial derivates of the loss with respect to all the weights and biases. (e.g. <sup>_∂L_ </sup>⁄<sub> _∂w<sub>1</sub>_</sub>)
 3.  Use the SGD update equation to update each weight and bias.
 
-## Supplementary Information
+## Jupyter Notebook Setup Information
 
-### Running Jupyter Notebook on a server
+### Virtual environment setup 
 
--   **Login into Server and set up a jupyter notebook instance**
+Note: `Anaconda can be used as well`
+
+```shell
+$ python -m venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+```
+
+### Set up a Jupyter Notebook Kernel
+
+To start a new Jupyter Notebook kernel based on the current virtual environment:
+
+```shell
+$ python -m ipykernel install --user --name ENV_NAME --display-name "ENV_DISPLAY_NAME"
+```
+
+To list all kernels:
+
+```shell
+$ jupyter kernelspec list
+```
+
+To remove a kernel:
+
+```shell
+$ jupyter kernelspec uninstall unwanted-kernel
+```
+
+### Set up Jupyter Notebook extensions
+
+`pep8` package is required for auto-linting in the notebook.
+
+```shell
+$ pip install -e jupyter_contrib_nbextensions     # For pip
+$ conda install -c conda-forge jupyter_contrib_nbextensions # For Anaconda
+$ jupyter contrib nbextension install --user
+$ pip install pep8                                # For pip, required for auto-linting
+$ conda install -c anaconda pep8                  # For Anaconda, required for auto-linting
+```
+
+### Set up Jupyter Notebook Themes
+
+We use [dunovank/jupyter-themes](https://github.com/dunovank/jupyter-themes)
+
+```shell
+$ pip install --upgrade jupyterthemes             # For pip
+$ conda install -c conda-forge jupyterthemes      # For Anaconda
+$ jt -t chesterish -T -f roboto -fs 12 -cellw 95% # Sets theme to chesterish, enables toolbar, sets font to robot, sets fontsize to 12, set cell width to 95% of screen
+```
+
+### Set up Jupyter Notebook from Server
 
 1.  `$ ssh username@server_ip_addr`
 2.  Install anaconda in the server
@@ -326,19 +376,14 @@ This process has to be repeated for each weight and bias in our network. This wa
 5.  `$ conda install python_package_name`
 6.  `$ conda info --env`
 7.  `$ conda list`
-
--   **From local machine terminal, run:**
-
-8.  `$ ssh -L 8000:localhost:8888 username@your_server_ip`
+8.  `$ ssh -L 8000:localhost:8888 username@your_server_ip` # From local machine terminal
 9.  `$ jupyter notebook --no-browser`
 10. On your local machine, go to `http://localhost:8000` and enter token from server.
+11. `!conda list` # From inside the jupyter notebook test modules
 
-From inside the jupyter notebook test modules
-11\. `!conda list`
+### Conda environment package save and load
 
-### Conda environment setup
-
-Note: To export current conda env
+To export current conda env
 
 `$ conda-env  export -n your_env_name > your_env_name.yml`
 
