@@ -327,22 +327,10 @@ $ pip install -r requirements.txt
 
 ### Set up a Jupyter Notebook Kernel
 
-To start a new Jupyter Notebook kernel based on the current virtual environment:
-
 ```shell
-$ python -m ipykernel install --user --name ENV_NAME --display-name "ENV_DISPLAY_NAME"
-```
-
-To list all kernels:
-
-```shell
-$ jupyter kernelspec list
-```
-
-To remove a kernel:
-
-```shell
-$ jupyter kernelspec uninstall unwanted-kernel
+$ python -m ipykernel install --user --name ENV_NAME --display-name "ENV_DISPLAY_NAME" # start a new nb kernel from the current venv
+$ jupyter kernelspec list                                                              # To list all kernels
+$ jupyter kernelspec uninstall unwanted-kernel                                         # To remove a kernel
 ```
 
 ### Set up Jupyter Notebook extensions
@@ -350,11 +338,11 @@ $ jupyter kernelspec uninstall unwanted-kernel
 `pep8` package is required for auto-linting in the notebook.
 
 ```shell
-$ pip install -e jupyter_contrib_nbextensions     # For pip
+$ pip install -e jupyter_contrib_nbextensions               # For pip
 $ conda install -c conda-forge jupyter_contrib_nbextensions # For Anaconda
 $ jupyter contrib nbextension install --user
-$ pip install pep8                                # For pip, required for auto-linting
-$ conda install -c anaconda pep8                  # For Anaconda, required for auto-linting
+$ pip install pep8                                          # For pip, required for auto-linting
+$ conda install -c anaconda pep8                            # For Anaconda, required for auto-linting
 ```
 
 ### Set up Jupyter Notebook Themes
@@ -381,15 +369,19 @@ $ jt -t chesterish -T -f roboto -fs 12 -cellw 95% # Sets theme to chesterish, en
 10. On your local machine, go to `http://localhost:8000` and enter token from server.
 11. `!conda list` # From inside the jupyter notebook test modules
 
+### Set up Jupyter Notebook Server in the background
+
+```shell
+$ nohup jupyter notebook --no-browser & # Run the notebook in the background so ssh can be disconnected
+$ lsof -ti:8000 | xargs kill            # Kill the Jupyter notebook process in that port
+```
+
 ### Conda environment package save and load
 
-To export current conda env
-
-`$ conda-env  export -n your_env_name > your_env_name.yml`
-
-To create new environment using yml configuration file run:
-
-`$ conda-env create -n new_env -f=\path\to\base.yml`
+```shell
+$ conda-env  export -n your_env_name > your_env_name.yml  # To export current conda env
+$ conda-env create -n new_env -f=\path\to\base.yml        # To create new environment using yml configuration file
+```
 
 ## Acknowledgments
 
